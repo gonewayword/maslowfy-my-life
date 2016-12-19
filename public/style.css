@@ -1,0 +1,63 @@
+html {
+  overflow-y: scroll;
+  margin: auto;
+}
+body {
+  padding-top: 20px;
+}
+h1 {
+  color: #00cc99;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 80;
+  position: relative;
+  text-align: center;
+}
+li {
+  style: inline-block;
+  list-style: none;
+}
+.deleter {
+  style: inline-block;
+  color: #00cc99;
+  font-size: 18;
+}
+#mas-count {
+  font-size: 17;
+  color: #00cc99;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+#maslow-list {
+  margin-bottom: 30px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 30;
+  color: #669999
+}
+#maslow-form {
+  width: 100%;
+  height: 30px;
+  display: block;
+  font-size: 13px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+#submit-maslow {
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15;
+  color: #006666;
+  background-color: #00cc99;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+input[type=submit] {
+  width: 120px;
+  height: 30px;
+  font-size: 20;
+}
+input[type=text] {
+  width: 50%;
+  display: block;
+  font-size: 13px;
+  padding: 5px;
+  margin-bottom: 5px;
+}

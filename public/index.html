@@ -1,0 +1,60 @@
+<html ng-app='maslow'>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Maslowfy My Life</title>
+
+        <!-- /*<style>*/ -->
+            <!-- html { overflow-y: scroll; }
+            body { padding-top: 20px; }
+            #maslow-list { margin-bottom: 30px }
+        </style>*/ -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+        <script src="core.js"></script>
+
+    </head>
+
+    <body ng-controller='maslowCTRL'>
+        <div class='container'>
+
+            <div class='jumbotron text-center'>
+                <h1 id='title'>Maslowfy Your Life</h1>
+            </div>
+
+                <span id='mas-count' class='label label-info' > Maslowfied Items: {{ maslows.length }}</span>
+            <div id='maslow-list' class='row'>
+                <div class=''>
+<!-- 'col-sm-4 col-sm-offset-4' -->
+                    <div class='checkbox' ng-repeat='maslow in maslows'>
+                        <label>
+                            <span> {{ maslow.text }} </span>
+                            -
+                            <span class='deleter' mw-confirm-click="deleteMaslow(maslow._id)" mw-confirm-click-message="You are about to delete a Maslowfied Plan. Did you finish this goal or is it no longer important to you? Click to confirm.">Delete</span>
+                            -
+                            <span class='deleter' ng-click='deleteMaslow(maslow._id)'>Edit</span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class=''>
+                    <form id='maslow-form'>
+                        <div class='form-group'>
+                            <input type='text' class='maslow-input' placeholder="Let's start adding dreams, goals, priorities, and day-to-day bullshit to a pyramid" ng-model='formData.text'>
+                        </div>
+
+                        <button type='submit' id='submit-maslow' ng-click='createMaslow()'>Add a dream</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

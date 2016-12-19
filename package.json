@@ -1,0 +1,40 @@
+{
+  "name": "maslowfy-my-life",
+  "version": "1.0.0",
+  "description": "Put your life into serious perspective.",
+  "main": "server.js",
+  "scripts": {
+    "test": "run test",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/gonewayword/Maslowfy"
+  },
+  "keywords": [
+    "Maslow",
+    "hierarchy",
+    "of",
+    "needs",
+    "angular",
+    "meanstack"
+  ],
+  "author": "Brendan Frost",
+  "license": "ISC",
+  "//"      : [
+    "body parser: Parse incoming request bodies in a middleware before your handlers, available under the req.body property.",
+    "method-override: Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.",
+    "morgan: basically a middleware logger for client info"
+  ],
+  "dependencies" : {
+    "body-parser"    : "^1.4.3",
+    "express"        : "^4.13.4",
+    "method-override": "^2.1.3",
+    "mongoose"       : "^4.4.12",
+    "morgan"         : "^1.1.1"
+  }
+}
