@@ -1,5 +1,5 @@
 var maslow = angular.module('maslow', [
-
+    'detailView'
   ])
   .controller('maslowCTRL', function($scope, $http) {
     $scope.formData = {};

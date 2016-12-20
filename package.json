@@ -26,6 +26,7 @@
     "method-override: Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it."
   ],
   "dependencies": {
+    "angular-route": "^1.6.0",
     "body-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",

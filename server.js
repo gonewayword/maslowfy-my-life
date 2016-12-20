@@ -18,7 +18,29 @@ app.listen(process.env.PORT || 4200);
 console.log("Maslowfy listening on port 4200");
 
 var Maslow = mongoose.model('Maslow', {
-  text: String
+  text: String,
+  method: String,
+  progress: String
+});
+var Esteem = mongoose.model('Esteem', {
+  text: String,
+  method: String,
+  progress: String
+});
+var Love = mongoose.model('Love', {
+  text: String,
+  method: String,
+  progress: String
+});
+var Safety = mongoose.model('Safety', {
+  text: String,
+  method: String,
+  progress: String
+});
+var Physio = mongoose.model('Physio', {
+  text: String,
+  method: String,
+  progress: String
 });
 
 app.get('/api/maslows', function(req, res){

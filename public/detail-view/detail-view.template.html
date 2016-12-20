@@ -1,0 +1,50 @@
+<span id='mas-count' class='' > Maslowfied Items: {{ maslows.length }}</span>
+    <div id='maslow-list' class='row'>
+        <div class=''>
+<!-- 'col-sm-4 col-sm-offset-4' -->
+            <div class='checkbox' ng-repeat='maslow in maslows'>
+                <label>
+                    <span> {{ maslow.text }} <br />
+                            {{ maslow.method }}</span>
+                    -
+                    <span class='deleter' mw-confirm-click="deleteMaslow(maslow._id)" mw-confirm-click-message="You are about to delete a Maslowfied Plan. Did you finish this goal or is it no longer important to you? Click to confirm.">Delete</span>
+                    -
+                    <span class='deleter' ng-click='deleteMaslow(maslow._id)'>Delete Without Confirm</span>
+                </label>
+            </div>
+            <div class='checkbox' ng-repeat='maslow in maslows'>
+                <label>
+                    <span> {{ maslow.method }} </span>
+                    -
+                    <span class='deleter' mw-confirm-click="deleteMaslow(maslow._id)" mw-confirm-click-message="You are about to delete a Maslowfied Plan. Did you finish this goal or is it no longer important to you? Click to confirm.">Delete</span>
+                    -
+                    <span class='deleter' ng-click='deleteMaslow(maslow._id)'>Delete Without Confirm</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class=''>
+            <form id='maslow-form'>
+                <div class='form-group'>
+                    <input type='text' class='maslow-input' placeholder="Let's start adding dreams, goals, priorities, and day-to-day bullshit to a pyramid" ng-model='formData.text'>
+                </div>
+
+                <button class='btn-group' type='submit' id='submit-maslow' ng-valid ng-click='createMaslow()'>Add a dream</button>
+
+            </form>
+        </div>
+    </div>
+<br />
+    <div class='row'>
+        <div class=''>
+            <form id='maslow-form'>
+                <div class='form-group'>
+                    <input type='text' class='maslow-input' placeholder="Let's start adding dreams, goals, priorities, and day-to-day bullshit to a pyramid" ng-model='formData.text'>
+                </div>
+
+                <button class='btn-group' type='submit' id='submit-maslow' ng-valid ng-click='createMaslow()'>Describe your method</button>
+
+            </form>
+        </div>
+    </div>

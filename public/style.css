@@ -11,6 +11,13 @@ h1 {
   font-size: 80;
   position: relative;
   text-align: center;
+  padding-bottom: 100px;
+}
+#title {
+  color: #00cc99;
+  font-family: "Arial Black", Gadget, sans-serif;
+  border-radius: 20px;
+  margin: 10px
 }
 li {
   style: inline-block;
@@ -40,7 +47,30 @@ li {
   padding: 5px;
   margin-bottom: 5px;
 }
-#submit-maslow {
+#pyramid {
+  margin: 0 auto;
+  display: table;
+  width: 60%;
+  text-align: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+#pyramid-top {
+  width: 250px;
+}
+#pyramid-second {
+  width: 350px
+}
+#pyramid-third {
+  width: 450px
+}
+#pyramid-fourth {
+  width: 550px
+}
+#pyramid-fifth {
+  width: 650px
+}
+/*#submit-maslow {
   width: 120px;
   height: 30px;
   border-radius: 10px;
@@ -48,7 +78,7 @@ li {
   color: #006666;
   background-color: #00cc99;
   font-family: "Arial Black", Gadget, sans-serif;
-}
+}*/
 input[type=submit] {
   width: 120px;
   height: 30px;
