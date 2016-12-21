@@ -8,16 +8,18 @@ body {
 h1 {
   color: #00cc99;
   font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 80;
+  font-size: 50;
   position: relative;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
+  padding-top: 50px;
 }
 #title {
   color: #00cc99;
   font-family: "Arial Black", Gadget, sans-serif;
   border-radius: 20px;
-  margin: 10px
+  width: 70%;
+  margin: 0 auto;
 }
 li {
   style: inline-block;
@@ -34,9 +36,9 @@ li {
   font-family: "Arial Black", Gadget, sans-serif;
 }
 #maslow-list {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 30;
+  font-size: 20;
   color: #669999
 }
 #maslow-form {
@@ -50,25 +52,34 @@ li {
 #pyramid {
   margin: 0 auto;
   display: table;
-  width: 60%;
+  width: 70%;
   text-align: center;
-  margin-top: 75px;
-  margin-bottom: 75px;
+  margin-bottom: 30px;
 }
 #pyramid-top {
-  width: 250px;
+  width: 25%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 #pyramid-second {
-  width: 350px
+  width: 35%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 #pyramid-third {
-  width: 450px
+  width: 55%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 #pyramid-fourth {
-  width: 550px
+  width: 80%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 #pyramid-fifth {
-  width: 650px
+  width: 100%;
+  margin: auto;
+  margin-bottom: 15px;
 }
 /*#submit-maslow {
   width: 120px;
