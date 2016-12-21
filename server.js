@@ -17,12 +17,19 @@ app.use(methodOverride());
 app.listen(process.env.PORT || 4200);
 console.log("Maslowfy listening on port 4200");
 
+var Users = new mongoose.Schema({
+  username: String,
+  password: String
+})
+
+var User = mongoose.model('User', Users);
+
 var MaslowSchema = new mongoose.Schema({
-  self: [String],
-  esteem: [String],
-  love: [String],
-  safety: [String],
-  physio: [String]
+  self: String,
+  esteem: String,
+  love: String,
+  safety: String,
+  physio: String
 })
 
 mongoose.model('Maslow', MaslowSchema);
@@ -41,49 +48,53 @@ app.get('/api/maslows', function(req, res){
 });
 
 app.post('/api/maslows', function(req, res){
+      //
+      // var query = {
+      //   self: req.body._id
+      // };
+      // var update = {
+      //   self: req.body.self,
+      //   esteem: req.body.esteem,
+      //   love: req.body.love,
+      //   safety: req.body.safety,
+      //   physio: req.body.physio
+      // };
+      // var options = {
+      //   // Return the document after updates are applied
+      //   new: true,
+      //   // Create a document if one isn't found. Required
+      //   // for `setDefaultsOnInsert`
+      //   upsert: true,
+      //   setDefaultsOnInsert: true
+      // };
+      //
+      // Maslow.
+      //   findOneAndUpdate(query, update, options, function (error, doc) {
+      //     if(error){
+      //       console.log(error);
+      //     }
+      //     res.json(doc)
+      //   });
 
-      var query = {_id:req.params.id};
-      var update = {
-        self: req.body.self,
-        esteem: req.body.esteem,
-        love: req.body.love,
-        safety: req.body.safety,
-        physio: req.body.physio
-      };
-      var options = {
-        // Return the document after updates are applied
-        new: true,
-        // Create a document if one isn't found. Required
-        // for `setDefaultsOnInsert`
-        upsert: true,
-        setDefaultsOnInsert: true
-      };
-
-      Maslow.
-        findOneAndUpdate(query, update, options, function (error, doc) {
-          assert.ifError(error);
-          res.json(doc)
-        });
-
-    // Maslow.create({
-    //   self: req.body.self,
-    //   esteem: req.body.esteem,
-    //   love: req.body.love,
-    //   safety: req.body.safety,
-    //   physio: req.body.physio,
-    //   done: false
-    // },
-    // function(err, maslow){
-    //   if(err){
-    //     res.send(err);
-    //   }
-    //   Maslow.find(function(err, maslow){
-    //     if(err){
-    //       res.send(err);
-    //     }
-    //     res.json(maslow);
-    //   })
-    // })
+    Maslow.create({
+      self: req.body.self,
+      esteem: req.body.esteem,
+      love: req.body.love,
+      safety: req.body.safety,
+      physio: req.body.physio,
+      done: false
+    },
+    function(err, maslow){
+      if(err){
+        res.send(err);
+      }
+      Maslow.find(function(err, maslow){
+        if(err){
+          res.send(err);
+        }
+        res.json(maslow);
+      })
+    })
 
 });
 
@@ -112,24 +123,5 @@ app.get('*', function(req, res) {
 });
 
 
-
-// var Esteem = mongoose.model('Esteem', {
-//   text: String,
-//   method: String,
-//   progress: String
-// });
-// var Love = mongoose.model('Love', {
-//   text: String,
-//   method: String,
-//   progress: String
-// });
-// var Safety = mongoose.model('Safety', {
-//   text: String,
-//   method: String,
-//   progress: String
-// });
-// var Physio = mongoose.model('Physio', {
-//   text: String,
-//   method: String,
-//   progress: String
-// });
+module.exports = Maslow;
+module.exports = User;

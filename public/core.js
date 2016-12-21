@@ -1,8 +1,17 @@
 var maslow = angular.module('maslow', [
-
+  'ngRoute',
+  'ngAnimate'
   ])
   .controller('maslowCTRL', function($scope, $http) {
     $scope.formData = {};
+
+    $scope.emptyCheck = function(item) {
+      if(item === ""){
+        return false;
+      } else {
+        return true;
+      }
+    }
 
     $http.get('/api/maslows')
       .success(function(data){
@@ -13,13 +22,14 @@ var maslow = angular.module('maslow', [
         console.log(`Error: ${data}`);
       });
 
-    $scope.createMaslow = function(id) {
+    $scope.createMaslow = function() {
 
-        console.log(id, 'heres id in create maslow');
+        // console.log(id, 'heres id in create maslow');
 
         $http.post('/api/maslows/', $scope.formData)
           .success(function(data){
             console.log(data, 'data in ');
+            console.log(data, 'data after adding');
             $scope.formData = {};
             $scope.maslows = data;
           })

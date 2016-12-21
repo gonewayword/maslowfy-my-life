@@ -1,8 +1,9 @@
 <html ng-app='maslow'>
     <head>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <!-- <script src="node_modules/angular-route.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
         <script src="core.js"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,57 +18,132 @@
 
     </head>
 
+    <div class=''>
+        <h1 id='title'>Maslowfy Your Life</h1>
+    </div>
+
     <body ng-controller='maslowCTRL'>
-        <div class='container'>
+
+      <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+
+  <div class='container'>
 <!-- 'jumbotron text-center' -->
-
-          <div class="btn-group">
-            <button class="btn btn-default" ng-click='changeView("signup")'>
-              Sign-Up
-            </button>
-            <button class="btn btn-default" ng-click='changeView("signin")'>
-              Sign-In
-            </button>
-            <button class="btn btn-default" ng-click='changeView("links")'>
-              The Hierarchy Explained
-            </button>
-            <button class="btn btn-default" ng-click='changeView("shorten")'>
-              Create a Pyramid
-            </button>
-            <button class="btn btn-default" ng-click='changeView("links")'>
-              View Your Existence Pyramid
-            </button>
-          </div>
+<div class='btn-group'>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#addModal" data-whatever="@getbootstrap">Add To Your Pyramid</button>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">View Your Pyramid</button>
+</div>
+<!-- <br /> -->
+<span id='mas-quote'>"Being a full human being is difficult, frightening, and problematical." - Abraham Maslow</span>
 
 
-          <div class=''>
-              <h1 id='title'>Maslowfy Your Life</h1>
-          </div>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Add To Your Pyramid</h4>
+      </div>
+      <div class="modal-body">
 
-<!--  Everything below needs to render dynamically  -->
+        <div class='row' style='margin: auto'>
+            <div class=''>
+                <form id='maslow-form'>
+                    <div class='form-group'>
+                        <input type='text' class='maslow-input' placeholder="Add a self-actualization goal" ng-model='formData.self'>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' class='maslow-input' placeholder="Add an esteem goal" ng-model='formData.esteem'>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' class='maslow-input' placeholder="Add a love and belonging goal" ng-model='formData.love'>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' class='maslow-input' placeholder="Add a physical safety goal" ng-model='formData.safety'>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' class='maslow-input' placeholder="Add a physiological goal" ng-model='formData.physio'>
+                    </div>
 
-<!-- <span ng-app='maslow' id='mas-count' class=''> Maslowfied Items: {{ maslows.length }}</span> -->
-<!-- If I want to confirm delete code is below -->
-<!-- <span class='deleter' mw-confirm-click="deleteMaslow(maslow._id)">Delete</span> -->
+                </form>
+            </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class='btn btn-default' type='submit' id='submit-maslow' ng-click='createMaslow()'>Add To Your Pyramid</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Here's Your Current Pyramid</h4>
+      </div>
+      <div class="modal-body">
+
+        <div id='pyramid' class='row'>
+            <div class=''>
+              <div><a href="#" id='pyramid-top' class="list-group-item list-group-item-success" width='100px'>Self-Actualization</a></div>
+                <span class='checkbox' ng-repeat='maslow in maslows'>
+                    <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.self }} </span></label>
+                </span>
+                  <div><a href="#" id='pyramid-second' class="list-group-item list-group-item-info">Esteem</a></div>
+                <div class='checkbox' ng-repeat='maslow in maslows'>
+                  <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.esteem }} </span></label>
+                </div>
+                <div><a href="#" id='pyramid-third' class="list-group-item list-group-item-danger">Love and Belonging</a></div>
+                    <div class='checkbox' ng-repeat='maslow in maslows'>
+                        <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.love }} </span></label>
+                    </div>
+                <div><a href="#" id='pyramid-fourth' class="list-group-item list-group-item-warning">Safety</a></div>
+                    <div class='checkbox' ng-repeat='maslow in maslows'>
+                        <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.safety }} </span></label>
+                    </div>
+                <div><a href="#" id='pyramid-bottom' class="list-group-item list-group-item-info">Physiology</a></div>
+                    <div class='checkbox' ng-repeat='maslow in maslows'>
+                        <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.physio }} </span></label>
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- data-toggle="popover" title="Popover Header" data-content="Some content inside the popover" -->
     <div id='pyramid' class='row'>
         <div class=''>
-          <div><a href="#" id='pyramid-top' class="list-group-item list-group-item-success" width='100px'>Self-Actualization</a></div>
-            <span class='checkbox' ng-repeat='maslow in maslows '>
+          <div><a href="#" id='pyramid-top' data-toggle="popover" title='"Become Who You Are"' data-content="- Nietzsche"class="list-group-item list-group-item-success" width='100px'>Self-Actualization</a></div>
+            <span class='checkbox' ng-repeat='maslow in maslows'>
                 <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.self }} </span></label>
             </span>
-              <div><a href="#" id='pyramid-second' class="list-group-item list-group-item-info">Esteem</a></div>
+              <div><a href="#" id='pyramid-second' data-toggle="popover" title='"Everything can be taken from a person but one thing: the last of the human freedoms—to choose one’s attitude in any given set of circumstances, to choose one’s own way."' data-content=" - Victor Frankl" class="list-group-item list-group-item-info">Esteem</a></div>
             <div class='checkbox' ng-repeat='maslow in maslows'>
               <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.esteem }} </span></label>
             </div>
-            <div><a href="#" id='pyramid-third' class="list-group-item list-group-item-danger">Love and Belonging</a></div>
+            <div><a href="#" id='pyramid-third' data-toggle="popover" title='"Love is a lot like a backache, it doesn’t show up on X-rays, but you know it’s there."' data-content=" - George Burns" class="list-group-item list-group-item-danger">Love and Belonging</a></div>
                 <div class='checkbox' ng-repeat='maslow in maslows'>
                     <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.love }} </span></label>
                 </div>
-            <div><a href="#" id='pyramid-fourth' class="list-group-item list-group-item-warning">Safety</a></div>
+            <div><a href="#" id='pyramid-fourth' data-toggle="popover" title="You're on Earth. There's no cure for that." data-content=" - Samuel Beckett" class="list-group-item list-group-item-warning">Safety</a></div>
                 <div class='checkbox' ng-repeat='maslow in maslows'>
                     <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.safety }} </span></label>
                 </div>
-            <div><a href="#" id='pyramid-bottom' class="list-group-item list-group-item-info">Physiology</a></div>
+            <div><a href="#" id='pyramid-bottom' data-toggle="popover" title='"So long as you have food in your mouth, you have solved all questions for the time being."' data-content=" - Franz Kafka" class="list-group-item list-group-item-info">Physiology</a></div>
                 <div class='checkbox' ng-repeat='maslow in maslows'>
                     <label><span class="list-group-item" ng-click='deleteMaslow(maslow._id)'> {{ maslow.physio }} </span></label>
                 </div>
@@ -76,32 +152,60 @@
         </div>
     </div>
 
-    <div class='row' style='margin: auto'>
-        <div class=''>
-            <form id='maslow-form'>
-                <div class='form-group'>
-                    <input type='text' class='maslow-input' placeholder="Add a self-actualization goal" ng-model='formData.self'>
-                </div>
-                <div class='form-group'>
-                    <input type='text' class='maslow-input' placeholder="Add an esteem goal" ng-model='formData.esteem'>
-                </div>
-                <div class='form-group'>
-                    <input type='text' class='maslow-input' placeholder="Add a love and belonging goal" ng-model='formData.love'>
-                </div>
-                <div class='form-group'>
-                    <input type='text' class='maslow-input' placeholder="Add a physical safety goal" ng-model='formData.safety'>
-                </div>
-                <div class='form-group'>
-                    <input type='text' class='maslow-input' placeholder="Add a physiological goal" ng-model='formData.physio'>
-                </div>
-                <button class='btn-group' type='submit' id='submit-maslow' ng-click='createMaslow(maslow._id)'>Create a Pyramid</button>
-
-            </form>
-        </div>
-    </div>
-
-<!-- all above needs to render dynamically -->
         </div>
     </body>
 
 </html>
+
+
+
+<!-- <div class='row' style='margin: auto'>
+    <div class=''>
+        <form id='maslow-form'>
+            <div class='form-group'>
+                <input type='text' class='maslow-input' placeholder="Add a self-actualization goal" ng-model='formData.self'>
+            </div>
+            <div class='form-group'>
+                <input type='text' class='maslow-input' placeholder="Add an esteem goal" ng-model='formData.esteem'>
+            </div>
+            <div class='form-group'>
+                <input type='text' class='maslow-input' placeholder="Add a love and belonging goal" ng-model='formData.love'>
+            </div>
+            <div class='form-group'>
+                <input type='text' class='maslow-input' placeholder="Add a physical safety goal" ng-model='formData.safety'>
+            </div>
+            <div class='form-group'>
+                <input type='text' class='maslow-input' placeholder="Add a physiological goal" ng-model='formData.physio'>
+            </div>
+                <button class='btn-group' type='submit' id='submit-maslow' ng-click='createMaslow()'>Create a Pyramid</button>
+
+        </form>
+    </div>
+</div> -->
+
+<!-- all above needs to render dynamically -->
+
+
+<!-- <div class="btn-group">
+  <button class="btn btn-default" ng-click='changeView("signup")'>
+    Sign-Up
+  </button>
+  <button class="btn btn-default" ng-click='changeView("signin")'>
+    Sign-In
+  </button>
+  <button class="btn btn-default" ng-click='changeView("links")'>
+    The Hierarchy Explained
+  </button>
+  <button class="btn btn-default" ng-click='changeView("shorten")'>
+    Create a Pyramid
+  </button>
+  <button class="btn btn-default" ng-click='changeView("links")'>
+    View Your Existence Pyramid
+  </button>
+</div> -->
+
+<!--  Everything below needs to render dynamically  -->
+
+<!-- <span ng-app='maslow' id='mas-count' class=''> Maslowfied Items: {{ maslows.length }}</span> -->
+<!-- If I want to confirm delete code is below -->
+<!-- <span class='deleter' mw-confirm-click="deleteMaslow(maslow._id)">Delete</span> -->
